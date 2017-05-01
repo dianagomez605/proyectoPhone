@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Primera aplicación en phoneGap</title>
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script>
+
+window.onload = function(){
+
+$("#reserva").click(enviar);
+}
+
+function enviar() { 
+  var nombre=$("#nombre").val(); 
+  var apellido=$("#apellido").val(); 
+  var placa=$("#placa").val(); 
+  var cedula=$("#cedula").val(); 
+
+  $.ajax({ 
+  async:true, 
+  type: "POST", 
+  dataType: "html", contentType: "application/x-www-form-urlencoded", 
+  url:"http://192.168.1.13/proyectoPhone/reservar.php", 
+  data:"nombre="+nombre+"&apellido="+apellido+"&placa="+placa+"&cedula="+cedula, beforeSend:inicioEnvio, success:llegadaDatos, 
+  timeout:4000, 
+  error:problemas }); 
+  return false; 
+} 
+
+ function inicioEnvio(datos)
+        {
+            $("#respuesta").text(datos);
+        }
+
+        function llegadaDatos(datos)
+        {
+            $("#respuesta").text(datos);
+                       
+        }
+
+        function problemas()
+        {
+            $("#respuesta").text('Problemas en el servidor.');
+        }
+
+</script>
+
+
+  </body>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Proyecto PhoneGap</a>
+    </div>
+    <ul class="nav navbar-nav">
+     <li class="active"><a href="index.html">Home</a></li>
+      <li><a href="mostrarReserva.html">Consultar reservas</a></li>
+      <li><a href="formReserva.html">Realizar reservas</a></li>
+      <li><a href="#">Page 3</a></li>
+    </ul>
+  </div>
+</nav>
+<h1>Reservar</h1>
+
+
+
+  <div class="form-group">
+    <label for="cedula">Cédula:</label>
+    <input type="text" class="form-control" id="cedula" name="cedula">
+  </div>
+  <div class="form-group">
+    <label for="nombre">Nombre:</label>
+    <input type="text" class="form-control" id="nombre" name="nombre">
+  </div>
+  <div class="form-group">
+    <label for="apellido">Apellidos:</label>
+    <input type="text" class="form-control" id="apellido" name="apellido">
+  </div>
+  <div class="form-group">
+    <label for="placa">Placa:</label>
+    <input type="text" class="form-control" id="placa" name="placa">
+  </div>
+ 
+  <button type="button" id="reserva" class="btn btn-default">Reservar</button>
+
+
+<div id="respuesta"></div>
+
+
+
+
+
+
+
+</body>
+</html>
