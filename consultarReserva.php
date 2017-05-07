@@ -1,8 +1,9 @@
 <?php
-
+ header("Access-Control-Allow-Origin: *");
 include("conexion.php");
 
 $sentencia = "select * from reserva";
+
 
 $query = mysqli_query($conexion,$sentencia);
 

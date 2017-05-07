@@ -1,6 +1,7 @@
 <?php
  
  include("conexion.php");
+ header("Access-Control-Allow-Origin: *");
 
 $cedula = $_POST["cedula"];
 $nombre = $_POST["nombre"];
