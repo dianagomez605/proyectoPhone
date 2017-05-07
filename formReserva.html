@@ -25,14 +25,14 @@ function enviar() {
   dataType: "html", contentType: "application/x-www-form-urlencoded", 
   url:"http://192.168.1.15/proyectoPhone/reservar.php", 
   data:"nombre="+nombre+"&apellido="+apellido+"&placa="+placa+"&cedula="+cedula, beforeSend:inicioEnvio, success:llegadaDatos, 
-  timeout:4000, 
+  timeout:7000, 
   error:problemas }); 
   return false; 
 } 
 
- function inicioEnvio(datos)
+ function inicioEnvio()
         {
-            $("#respuesta").text(datos);
+            $("#respuesta").text("Se están enviando los datos");
         }
 
         function llegadaDatos(datos)
