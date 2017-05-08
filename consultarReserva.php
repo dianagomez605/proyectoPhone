@@ -2,9 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 include("conexion.php");
 
-echo "HOla";
-
-/*$sentencia = "select * from reserva";
+$sentencia = "select * from reserva";
 
 
 $query = mysqli_query($conexion,$sentencia);
@@ -24,5 +22,5 @@ if($cantidadRegistros > 0){
 	echo "No hay registros";
 }
 
-mysqli_close($conexion);*/
+mysqli_close($conexion);
 ?>
